@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php": "^7.2",
+        "some/dependency": "^1.0"
+    }
+}

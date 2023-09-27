@@ -1,9 +1,13 @@
+<?php
+// Include any necessary PHP files or configuration here
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
+    <title>Jakob Privacy Webpage</title>
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
@@ -22,7 +26,7 @@
     <section id="home">
         <div class="hero-content">
             <h1>Jakob Privacy Webpage</h1>
-            <p>This is where you will find the privacy statement for the resteraunt.</p>
+            <p>This is where you will find the privacy statement for the restaurant.</p>
         </div>
     </section>
 
@@ -36,8 +40,8 @@
                 interactions with us
                 billing or purchase information
                 We collect your personal information in order to:
-                in order to drive more customers to the buisiness
-                We keep your information safe by storing it in encrypted files and only allowing certain staff to access it .
+                in order to drive more customers to the business
+                We keep your information safe by storing it in encrypted files and only allowing certain staff to access it.
                 
                 We keep your information for one year at which point we securely destroy it by erasing everything.
                 You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you’d like to ask for a copy of your information, or to have it corrected, please contact us at jakmogford@gmail.com, or 0220897730, or 24 Te Huia.</p>

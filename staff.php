@@ -1,23 +1,12 @@
-<?php
-session_start();
-
-// Check if the user is not logged in, redirect to login page
-if (!isset($_SESSION["username"])) {
-    header("Location: login.html"); // Redirect to your login page
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JakobM 608 AS1</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
     <header>
         <nav>
             <ul>
@@ -28,7 +17,6 @@ if (!isset($_SESSION["username"])) {
         </nav>
     </header>
 
-    
     <section id="home">
         <div class="hero-content">
             <h1>Staff Section</h1>
@@ -57,9 +45,8 @@ if (!isset($_SESSION["username"])) {
                 <br>
                 <input type="submit" name="submit" value="Add Customer">
             </form>
-
-
         </div>
+
         <div class="top-right">
             <h2>Search Customer by Name</h2>
             <form action="search_customer.php" method="GET">
@@ -68,11 +55,11 @@ if (!isset($_SESSION["username"])) {
                 <input type="submit" name="submit" value="Search">
             </form>
             <table border="2">
-                <tr> 
-                    <th>Customer Name</th> 
+                <tr>
+                    <th>Customer Name</th>
                     <th>Booking ID</th>
-                    <th>Room #</th> 
-                    <th>Room name</th> 
+                    <th>Room #</th>
+                    <th>Room name</th>
                     <th>Room type</th>
                     <th>Beds</th>
                     <th>Edit</th>
@@ -89,50 +76,40 @@ if (!isset($_SESSION["username"])) {
                     <td><button>Delete</button></td>
                 </tr>
             </table>
-
-
         </div>
+
         <div class="bottom-left">
-            <div class="bottom-left">
-                <hr>
-                <div class="room-management-container">
-                    <h2>Add New Room</h2>
-                    <form action="add_room.php" method="POST">
-                        <form action="add_room.php" method="POST">
-                            <label for="roomName">Room Name:</label>
-                            <input type="text" name="roomName" id="roomName" required>
-                            <br>
-                            <label for="roomType">Room Type:</label>
-                            <input type="text" name="roomType" id="roomType" required>
-                            <br>
-                            <label for="beds">Beds:</label>
-                            <input type="number" name="beds" id="beds" required>
-                            <br>
-                            <input type="submit" name="submit" value="Add Room">
-                        </form>
-                    </form>
-                </div>
-                <hr>
-                <div class="room-management-container">
-                    <h2>Delete Room</h2>
-                    <form action="delete_room.php" method="POST">
-                        <form action="delete_room.php" method="POST">
-                            <label for="roomId">Room ID:</label>
-                            <input type="number" name="roomId" id="roomId" required>
-                            <br>
-                            <input type="submit" name="submit" value="Delete Room">
-                        </form>
-                    </form>
-                </div>
+            <hr>
+            <div class="room-management-container">
+                <h2>Add New Room</h2>
+                <form action="add_room.php" method="POST">
+                    <label for="roomName">Room Name:</label>
+                    <input type="text" name="roomName" id="roomName" required>
+                    <br>
+                    <label for="roomType">Room Type:</label>
+                    <input type="text" name="roomType" id="roomType" required>
+                    <br>
+                    <label for="beds">Beds:</label>
+                    <input type="number" name="beds" id="beds" required>
+                    <br>
+                    <input type="submit" name="submit" value="Add Room">
+                </form>
             </div>
-            
-
-
+            <hr>
+            <div class="room-management-container">
+                <h2>Delete Room</h2>
+                <form action="delete_room.php" method="POST">
+                    <label for="roomId">Room ID:</label>
+                    <input type="number" name="roomId" id="roomId" required>
+                    <br>
+                    <input type="submit" name="submit" value="Delete Room">
+                </form>
+            </div>
         </div>
+
         <div class="bottom-right">
             <h2>List Current Bookings</h2>
             <form action="list_bookings.php" method="POST">
-
                 <input type="submit" name="submit" value="List Bookings">
             </form>
 
@@ -142,9 +119,7 @@ if (!isset($_SESSION["username"])) {
                 <input type="text" name="bookingID" id="bookingID" required>
                 <input type="submit" name="submit" value="Search">
             </form>
-
         </div>
-      </section>
-      
+    </section>
 </body>
 </html>
