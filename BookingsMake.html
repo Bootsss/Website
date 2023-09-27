@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Home/Top section of the website-->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Jakob Make a Booking Page</h1>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h1>Make a booking</h1>
+            <form action="process_booking.php" method="POST">   
+                <label for="roomID">Room (name,type,beds): </label>
+                <select name="roomID" id="roomID" required>
+                    <script>
+                        // Sample room data
+                        var sampleRoomData = [
+                            { roomID: 1, roomname: "Kellie", roomtype: "S", beds: 5 },
+                            { roomID: 2, roomname: "Herman", roomtype: "D", beds: 5 },
+                            { roomID: 3, roomname: "Scarlett", roomtype: "D", beds: 2 },
+                            { roomID: 4, roomname: "Jelani", roomtype: "S", beds: 2 },
+                            { roomID: 5, roomname: "Sonya", roomtype: "S", beds: 5 },
+                            { roomID: 6, roomname: "Miranda", roomtype: "S", beds: 4 },
+                            { roomID: 7, roomname: "Helen", roomtype: "S", beds: 2 },
+                            { roomID: 8, roomname: "Octavia", roomtype: "D", beds: 3 },
+                            { roomID: 9, roomname: "Gretchen", roomtype: "D", beds: 3 },
+                            { roomID: 10, roomname: "Bernard", roomtype: "S", beds: 5 },
+                            { roomID: 11, roomname: "Dacey", roomtype: "D", beds: 2 },
+                            { roomID: 12, roomname: "Preston", roomtype: "D", beds: 2 },
+                            { roomID: 13, roomname: "Dane", roomtype: "S", beds: 4 },
+                            { roomID: 14, roomname: "Cole", roomtype: "S", beds: 1 }
+                        ];
+
+                        // Function to populate the dropdown with sample data
+                        function populateDropdown(data) {
+                            var roomDropdown = document.getElementById("roomID");
+                            data.forEach(function(room) {
+                                var option = document.createElement("option");
+                                option.value = room.roomID;
+                                option.text = room.roomname + "," + room.roomtype + "," + room.beds;
+                                roomDropdown.appendChild(option);
+                            });
+                        }
+
+                        // Populate the dropdown with sample data
+                        populateDropdown(sampleRoomData);
+                    </script>
+                </select>
+                <br>
+                <br>
+               
+                <label for="checkin">Select start date:</label>
+                <input type="text" name="checkin" id="datepicker-checkin" class="flatpickr" required>
+                <br>
+                <br>
+    
+                <label for="checkout">Select end date:</label>
+                <input type="text" name="checkout" id="datepicker-checkout" class="flatpickr" required>
+                
+                <br>
+                <br>
+    
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" id="firstName" required>
+                
+                <br>
+                <br>
+    
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" id="lastName" required>
+    
+                <br>
+                <br>
+    
+                <label for="contactnumber">Contact number:</label>
+                <input type="text" name="contactnumber" id="contactnumber" pattern="[0-9]{9,12}" required>
+    
+                <div class="extras">   
+                </div>
+                <input type="submit" name="submit" value="Add">  
+                <button type="button" onclick="window.location.href='index.html'">Cancel</button>
+            </form>
+            <hr>
+        </div>
+    </section>
+
+    <section id="checkAvailability">
+
+        <h2>Check Room Availability</h2>
+        <form action="availability_check.php" method="POST">
+        <div>
+            <label for="availabilityCheckin">Check-in Date:</label>
+            <input type="text" name="availabilityCheckin" id="availabilityCheckin" class="flatpickr" required>
+        </div>
+        <div>
+            <label for="availabilityCheckout">Checkout Date:</label>
+            <input type="text" name="availabilityCheckout" id="availabilityCheckout" class="flatpickr" required>
+        </div>
+        <div>
+            <button id="checkAvailabilityButton">Check Availability</button>
+        </div>
+        <div id="availabilityResult">
+        </div>
+    </section>
+    <script>
+        // Flatpickr initialization
+        var flatpickrOptions = {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            };
+
+            flatpickr("#availabilityCheckin", flatpickrOptions);
+            flatpickr("#availabilityCheckout", flatpickrOptions);
+    </script>
+    
+
+<script>
+    // JavaScript code for handling availability check
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sample room data
+        var sampleRoomData = [
+            { roomID: 1, roomname: "Kellie", roomtype: "S", beds: 5 },
+            { roomID: 2, roomname: "Herman", roomtype: "D", beds: 5 },
+            { roomID: 3, roomname: "Scarlett", roomtype: "D", beds: 2 },
+            { roomID: 4, roomname: "Jelani", roomtype: "S", beds: 2 },
+            { roomID: 5, roomname: "Sonya", roomtype: "S", beds: 5 },
+            { roomID: 6, roomname: "Miranda", roomtype: "S", beds: 4 },
+            { roomID: 7, roomname: "Helen", roomtype: "S", beds: 2 },
+            { roomID: 8, roomname: "Octavia", roomtype: "D", beds: 3 },
+            { roomID: 9, roomname: "Gretchen", roomtype: "D", beds: 3 },
+            { roomID: 10, roomname: "Bernard", roomtype: "S", beds: 5 },
+            { roomID: 11, roomname: "Dacey", roomtype: "D", beds: 2 },
+            { roomID: 12, roomname: "Preston", roomtype: "D", beds: 2 },
+            { roomID: 13, roomname: "Dane", roomtype: "S", beds: 4 },
+            { roomID: 14, roomname: "Cole", roomtype: "S", beds: 1 } 
+        ];
+
+        // Populate the room dropdown for availability check
+        var availabilityRoomDropdown = document.getElementById("availabilityRoomID");
+        populateDropdown(sampleRoomData, availabilityRoomDropdown);
+
+        // Flatpickr initialization
+        var flatpickrOptions = {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+        };
+        flatpickr("#availabilityCheckin", flatpickrOptions);
+        flatpickr("#availabilityCheckout", flatpickrOptions);
+
+                // Handle availability check button click
+        var checkAvailabilityButton = document.getElementById("checkAvailabilityButton");
+        var availabilityResult = document.getElementById("availabilityResult");
+
+        checkAvailabilityButton.addEventListener("click", function () {
+            var checkinDate = document.getElementById("availabilityCheckin").value;
+            var checkoutDate = document.getElementById("availabilityCheckout").value;
+
+            // Send an AJAX request to fetch available rooms based on the selected dates
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "availability_check.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Display the available rooms received from the server
+                    availabilityResult.innerHTML = xhr.responseText;
+                }
+            };
+
+            // Send the selected dates to the server
+            var data = "checkin=" + checkinDate + "&checkout=" + checkoutDate;
+            xhr.send(data);
+        });
+        });
+
+    // Function to populate the dropdown with sample data
+    function populateDropdown(data, dropdown) {
+        data.forEach(function (item) {
+            var option = document.createElement("option");
+            option.value = item.roomID;
+            option.textContent = item.roomname + " (" + item.roomtype + ")";
+            dropdown.appendChild(option);
+        });
+    }
+</script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; Jakob Mogford 608.</p>
+    </footer>
+    <script src="script.js"></script>
+    <?php include_once "database/db_config.php"; ?>
+    <?php include "makebooking.php"; ?>
+
+
+</body>
+</html>
