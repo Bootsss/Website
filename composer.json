@@ -1,6 +1,18 @@
 {
     "require": {
-        "php": "^7.2",
-        "some/dependency": "^1.0"
+        "php": "8.2.11"
+    },
+    "name": "jakob/website",
+    "description": "Jakob Website",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jakob",
+            "email": "jakmogford@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
