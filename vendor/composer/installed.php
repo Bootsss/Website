@@ -3,7 +3,7 @@
         'name' => 'jakob/website',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd548a472a8d337cadb73d2a980a4348e65fe45ad',
+        'reference' => '3d15eaad91ef006266438f73f99362c67edc78d6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'jakob/website' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd548a472a8d337cadb73d2a980a4348e65fe45ad',
+            'reference' => '3d15eaad91ef006266438f73f99362c67edc78d6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
